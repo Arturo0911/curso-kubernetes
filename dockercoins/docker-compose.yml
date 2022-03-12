@@ -18,9 +18,14 @@ services:
     volumes:
     - "./webui/files/:/files/"
 
+    depends_on:
+      - "redis"
+
   redis:
     image: redis
 
   worker:
     build: worker
+    depends_on:
+      - "redis"
 
